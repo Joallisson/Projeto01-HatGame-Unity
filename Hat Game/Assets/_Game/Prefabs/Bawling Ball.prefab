@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5498469836474121315}
   - component: {fileID: 5498469836474121314}
   - component: {fileID: 5498469836474121313}
+  - component: {fileID: 5196960707631498705}
   m_Layer: 0
   m_Name: Bawling Ball
   m_TagString: Untagged
@@ -70,6 +71,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &5196960707631498705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5498469836474121312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 826d78057b2b51542995eb2f49500b2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5498469837222233685
 GameObject:
   m_ObjectHideFlags: 0
