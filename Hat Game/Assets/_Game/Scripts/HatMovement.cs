@@ -24,7 +24,7 @@ public class HatMovement : MonoBehaviour
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved && gameController.gameStarted) //Se a quantidade de toques na tela for maior que 0 && se o tipo de toque a tela é do tipo movimento
         {
             Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition; //pegando as coordenadados do meu dedo na tela
-            transform.Translate(touchDeltaPosition.x * speed * Time.deltaTime, 0f, 0f); //movendo o chapéu
+            transform.Translate(touchDeltaPosition.x * speed * Time.deltaTime, 0f, 0f); //movendo o chapéu 
         }
     }
 }
