@@ -7,7 +7,7 @@ using TMPro;
 public class UIController : MonoBehaviour
 {
     private GameController gameController; //Criando variavel a partir da classe GameController
-    public GameObject panelMainMenu;
+    public GameObject panelMainMenu, panelGame, panelPause, panelGameOver; //Crinado as variáveis dos painéis
 
     // Start is called before the first frame update
     void Start()
@@ -36,9 +36,51 @@ public class UIController : MonoBehaviour
     }
 
     public void ButtonStartGame()
-    {
-        gameController.gameStarted = true;
-        panelMainMenu.gameObject.SetActive(false); //Quando inicia o jogo o painel do usuário é desativado
+    {     
+        panelMainMenu.gameObject.SetActive(false); //Quando apertar no botão start o painel de menu principal é desativado
+        panelGame.gameObject.SetActive(true); //Quando apertar no botão start mostra o painel do jogo
+        gameController.StartGame(); //Quando apertar no botão start inicia o jogo
     }
+
+    public void ButtonPause() //Quando apertar o botão de Pause, mostra o painel do de pause e desativa o de jogo
+    {
+        panelGame.gameObject.SetActive(false); //Quando apertar no botão pause o painel de do jogo é desativado
+        panelPause.gameObject.SetActive(true);
+    }
+
+    public void ButtonResume() //Quando apertar o botão de Resume, mostra o painel do jogo e desativa o de pause
+    {
+        panelGame.gameObject.SetActive(true);
+        panelPause.gameObject.SetActive(false);
+    }
+
+    public void ButtonRestart()
+    {
+        panelGame.gameObject.SetActive(true);
+        panelPause.gameObject.SetActive(false);
+        panelGameOver.gameObject.SetActive(false);
+        gameController.StartGame();
+    }
+
+    public void ButtonBackMainMenu()
+    {
+        panelPause.gameObject.SetActive(false);
+        panelMainMenu.gameObject.SetActive(true);
+        panelGameOver.gameObject.SetActive(false);
+        gameController.BackMainMenu();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
     
 }

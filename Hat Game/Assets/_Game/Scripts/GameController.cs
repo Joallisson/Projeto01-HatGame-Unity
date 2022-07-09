@@ -9,30 +9,53 @@ public class GameController : MonoBehaviour
     [SerializeField] private float startTime;
     public float currentTime;
     public bool gameStarted;
+    private UIController uIController; //essa variável controlola os paines da classe UIController
     void Start()
     {
-        score = 0;
-        currentTime = startTime;
         gameStarted = false;
-
+        uIController = FindObjectOfType<UIController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        CountdownTime();
+        
     }
 
-    public void CountdownTime()
+    public void StartGame()
     {
-        if (currentTime > 0f && gameStarted)
+        score = 0;
+        currentTime = startTime;
+        gameStarted = true;
+        InvokeCountdownTime();
+    }
+
+    public void BackMainMenu()
+    {
+        score = 0;
+        currentTime = 0f;
+        gameStarted = false;
+        CancelInvoke("CountdownTime");
+    }
+
+    public void InvokeCountdownTime()
+    {
+        InvokeRepeating("CountdownTime", 1f, 1f);
+    }
+
+    public void CountdownTime() //Serve para ter uma contagem regressiva para terminar o jogo
+    {
+        if (currentTime > 0f && gameStarted) //enquanto o jogo estiver acontecendo
         {
-            currentTime -= Time.deltaTime;
-            float currentTimeToInt = Mathf.RoundToInt(currentTime);
-            Debug.Log(currentTimeToInt);
+            currentTime -= 1f;
             
-        }else
+        }else //quando chegar no game over
         {
+            uIController.panelGameOver.gameObject.SetActive(true);
+            uIController.panelGame.gameObject.SetActive(false);
+            gameStarted = false;
+            currentTime = 0f;
+            CancelInvoke("CountdownTime");
             return;
         }
         
