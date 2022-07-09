@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour
     {
         score = 0;
         currentTime = startTime;
-        gameStarted = true;
+        gameStarted = false;
 
     }
 
@@ -33,8 +33,6 @@ public class GameController : MonoBehaviour
             
         }else
         {
-            gameStarted = false;
-            currentTime = 0f;
             return;
         }
         
