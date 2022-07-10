@@ -9,10 +9,13 @@ public class UIController : MonoBehaviour
     private GameController gameController; //Criando variavel a partir da classe GameController
     public GameObject panelMainMenu, panelGame, panelPause, panelGameOver; //Crinado as variáveis dos painéis
 
+    public TMP_Text txtHighScore; //texyo da maior pontuação no painel do usuário
+
     // Start is called before the first frame update
     void Start()
     {
         gameController = FindObjectOfType<GameController>();
+        txtHighScore.text = "High Score: " + gameController.GetScore().ToString(); //alterando o High Score do painel do usuário para o valor da variável
     }
 
     // Update is called once per frame
@@ -21,7 +24,7 @@ public class UIController : MonoBehaviour
         
     }
 
-    public void ButtonExit(){
+    public void ButtonExit(){//Qunado clicar no botão de sair
 
         /*//Forma generica
         if(Input.GetKeyDown(KeyCode.Escape))
@@ -68,6 +71,7 @@ public class UIController : MonoBehaviour
         panelMainMenu.gameObject.SetActive(true);
         panelGameOver.gameObject.SetActive(false);
         gameController.BackMainMenu();
+        txtHighScore.text = "High Score: " + gameController.GetScore().ToString();
     }
 
 
