@@ -9,7 +9,7 @@ public class UIController : MonoBehaviour
     private GameController gameController; //Criando variavel a partir da classe GameController
     public GameObject panelMainMenu, panelGame, panelPause, panelGameOver; //Crinado as variáveis dos painéis
 
-    public TMP_Text txtHighScore; //texyo da maior pontuação no painel do usuário
+    public TMP_Text txtHighScore, txtTime, txtScore; //texyo da maior pontuação no painel do usuário
 
     // Start is called before the first frame update
     void Start()
@@ -49,12 +49,14 @@ public class UIController : MonoBehaviour
     {
         panelGame.gameObject.SetActive(false); //Quando apertar no botão pause o painel de do jogo é desativado
         panelPause.gameObject.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     public void ButtonResume() //Quando apertar o botão de Resume, mostra o painel do jogo e desativa o de pause
     {
         panelGame.gameObject.SetActive(true);
         panelPause.gameObject.SetActive(false);
+        Time.timeScale = 1f;
     }
 
     public void ButtonRestart()
@@ -63,6 +65,8 @@ public class UIController : MonoBehaviour
         panelPause.gameObject.SetActive(false);
         panelGameOver.gameObject.SetActive(false);
         gameController.StartGame();
+        gameController.DestroyAllBalls();
+        txtScore.text = gameController.score.ToString();
     }
 
     public void ButtonBackMainMenu()
@@ -72,6 +76,9 @@ public class UIController : MonoBehaviour
         panelGameOver.gameObject.SetActive(false);
         gameController.BackMainMenu();
         txtHighScore.text = "High Score: " + gameController.GetScore().ToString();
+        gameController.DestroyAllBalls();
+        txtScore.text = gameController.score.ToString();
+        Time.timeScale = 1f;
     }
 
 

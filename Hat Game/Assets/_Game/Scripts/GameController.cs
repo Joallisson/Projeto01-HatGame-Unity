@@ -5,11 +5,15 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     // Start is called before the first frame update
-    public int score, highScore;
+    [HideInInspector] public int score;
+    private int highScore;
     [SerializeField] private float startTime;
-    public float currentTime;
-    public bool gameStarted;
+    private float currentTime;
+    [HideInInspector] public bool gameStarted;
     private UIController uIController; //essa variável controlola os paines da classe UIController
+    private SpawnController spawnController;
+    [SerializeField] private Transform player; //vai armazenar o player
+    private Vector2 playerPosition; //vai armazenar a posição do player
     
     private void Awake() {
         DeleteHighScore();
@@ -19,13 +23,24 @@ public class GameController : MonoBehaviour
     {
         gameStarted = false;
         uIController = FindObjectOfType<UIController>();
+        spawnController = FindObjectOfType<SpawnController>();
         highScore = GetScore();
+        uIController.txtTime.text = currentTime.ToString();
+        playerPosition = player.position;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void DestroyAllBalls() //destroi todas as bolas criadas
+    {
+        foreach (Transform child in spawnController.allBallsParent)
+        {
+            Destroy(child.gameObject);
+        }
     }
 
     public void SaveScore() //salvando a maior pontuação
@@ -57,6 +72,7 @@ public class GameController : MonoBehaviour
         currentTime = startTime;
         gameStarted = true;
         InvokeCountdownTime(); //chamando o método InvokeCountdownTime()
+        player.position = playerPosition;
     }
 
     public void BackMainMenu()
@@ -64,16 +80,20 @@ public class GameController : MonoBehaviour
         score = 0;
         currentTime = 0f;
         gameStarted = false;
-        CancelInvoke("CountdownTime"); //Esse método só serve para cancelar o CountdownTime 
+        CancelInvoke("CountdownTime"); //Esse método só serve para cancelar o CountdownTime
+        player.position = playerPosition;
     }
 
     public void InvokeCountdownTime() //Esse método só serve para chamar o CountdownTime 
     {
-        InvokeRepeating("CountdownTime", 1f, 1f);
+        InvokeRepeating("CountdownTime", 0f, 1f);
     }
 
     public void CountdownTime() //Serve para ter uma contagem regressiva para terminar o jogo
     {
+        uIController.txtTime.text = currentTime.ToString();
+
+
         if (currentTime > 0f && gameStarted) //enquanto o jogo estiver acontecendo
         {
             currentTime -= 1f;

@@ -8,6 +8,7 @@ public class SpawnController : MonoBehaviour
     [SerializeField] private float topDistance, lateralMargin;
     private Vector2 screenWidth;
     private GameController gameController;
+    public Transform allBallsParent; //sempre que uma bola de boliche for criada ela deve ser filho desse objeto
 
     void Awake() {
         Initiallize();
@@ -39,6 +40,7 @@ public class SpawnController : MonoBehaviour
              yield return new WaitForSeconds(0f); //o que estiver abaixo desta linha vai acontecer depois de 2 segundo, e o que estiver antes dessa linha vai acontecer instantâneamente
             transform.position = new Vector2(Random.Range(-screenWidth.x + lateralMargin, screenWidth.x - lateralMargin), transform.position.y); //O transform.position vai receber uma posição aleatória no eixo x //definindo a posição em que o spawn vai sugir
             GameObject tempBallPrefab = Instantiate(ballPrefab, transform.position, Quaternion.identity) as GameObject; //instamciando bola de boliche nas coordenadas criadas
+            tempBallPrefab.transform.parent = allBallsParent; //estamo0s dizendo que os objetos instanciados são filhos do allBallsParent
         
         }else
         {
