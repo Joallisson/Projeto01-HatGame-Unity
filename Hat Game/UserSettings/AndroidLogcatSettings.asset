@@ -1,5 +1,5 @@
 {
-    "m_SelectedDeviceId": "",
+    "m_SelectedDeviceId": "4200f6ce0214764f",
     "m_SelectedPackage": {
         "deviceId": "",
         "name": "",
@@ -7,7 +7,44 @@
         "exited": false
     },
     "m_SelectedPriority": 0,
-    "m_KnownPackagesForSerialization": [],
+    "m_KnownPackagesForSerialization": [
+        {
+            "deviceId": "0037491834",
+            "name": "com.android.settings",
+            "processId": 15908,
+            "exited": true
+        },
+        {
+            "deviceId": "0037491834",
+            "name": "com.alphainventor.filemanager",
+            "processId": 19603,
+            "exited": true
+        },
+        {
+            "deviceId": "0037491834",
+            "name": "com.whatsapp",
+            "processId": 25610,
+            "exited": true
+        },
+        {
+            "deviceId": "0037491834",
+            "name": "com.android.launcher3",
+            "processId": 24544,
+            "exited": true
+        },
+        {
+            "deviceId": "0037491834",
+            "name": "com.android.launcher3",
+            "processId": 8559,
+            "exited": false
+        },
+        {
+            "deviceId": "4200f6ce0214764f",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 21358,
+            "exited": false
+        }
+    ],
     "m_Tags": {
         "m_Entries": [
             {
@@ -41,9 +78,20 @@
         ]
     },
     "m_MemoryViewerState": {
-        "MemoryWindowHeight": 0.0,
-        "MemoryWindowWidth": 0.0,
-        "MemoryTypeEnabled": [],
+        "MemoryWindowHeight": 300.0,
+        "MemoryWindowWidth": 170.0,
+        "MemoryTypeEnabled": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ],
         "MemoryGroup": 2,
         "Behavior": 0
     },
